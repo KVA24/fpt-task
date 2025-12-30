@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import {useEffect} from "react";
 
 export function useDisableZoom() {
   useEffect(() => {
@@ -20,10 +20,10 @@ export function useDisableZoom() {
     };
     
     // Desktop
-    document.addEventListener("wheel", preventZoom, { passive: false });
-    document.addEventListener("keydown", preventZoom, { passive: false });
+    document.addEventListener("wheel", preventZoom, {passive: false});
+    document.addEventListener("keydown", preventZoom, {passive: false});
     // Mobile Safari / iOS
-    document.addEventListener("gesturestart", preventZoom as EventListener, { passive: false });
+    document.addEventListener("gesturestart", preventZoom as EventListener, {passive: false});
     
     return () => {
       document.removeEventListener("wheel", preventZoom as EventListener);

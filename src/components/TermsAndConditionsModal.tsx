@@ -1,7 +1,6 @@
 "use client"
 
-import React, {useRef} from "react"
-import {useState} from "react"
+import React, {useRef, useState} from "react"
 import {ChevronLeft, ChevronRight, X} from "lucide-react"
 import {useTranslation} from "react-i18next"
 

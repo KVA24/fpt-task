@@ -76,7 +76,7 @@ const LanguageListModal: React.FC<LanguageListModalProps> = ({isOpen, onClose}) 
         </div>
         
         {/* Top handle indicator */}
-         <div className="flex justify-center py-2 absolute -top-5 w-full">
+        <div className="flex justify-center py-2 absolute -top-5 w-full">
           <div className="w-12 h-1 bg-white rounded-full"></div>
         </div>
       </div>

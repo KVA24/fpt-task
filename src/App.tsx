@@ -3,25 +3,15 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
 import {observer} from "mobx-react-lite"
 import Home from "@/pages/Home"
 import History from "@/pages/History"
-import Guide from "@/pages/Guide"
-import ESimDetail from "@/pages/ESimDetail.tsx";
-import Cart from "@/pages/Cart"
 import ProtectedRoute from "@/components/ProtectedRoute"
 import {ToastContainer} from "react-toastify";
-import Payment from "@/pages/Payment.tsx";
-import PaymentSuccess from "@/pages/PaymentSuccess.tsx";
-import PaymentFailure from "@/pages/PaymentFailure.tsx";
-import Search from "@/pages/Search.tsx";
 import {stores} from "@/stores"
-import AllCountries from "@/pages/AllCountries.tsx";
 import sha256 from 'crypto-js/sha256';
 import i18n from "i18next";
 import Profile from "@/pages/Profile.tsx";
 import {setAuthorization} from "@/api/apiCore.ts";
 import HistoryDetail from "@/pages/HistoryDetail.tsx";
 import {useGoogleReCaptcha} from "react-google-recaptcha-v3"
-import PaymentRush from "@/pages/PaymentRush.tsx";
-import Contact from "@/pages/Contact.tsx";
 import {useDisableZoom} from "@/hooks/useDisableZoom.ts";
 import {v4 as uuidv4} from "uuid";
 
@@ -148,90 +138,10 @@ const App: React.FC = observer(() => {
             }
           />
           <Route
-            path="/guide"
-            element={
-              <ProtectedRoute>
-                <Guide/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/contact"
-            element={
-              <ProtectedRoute>
-                <Contact/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
             path="/profile"
             element={
               <ProtectedRoute>
                 <Profile/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/esim/:id"
-            element={
-              <ProtectedRoute>
-                <ESimDetail/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/cart"
-            element={
-              <ProtectedRoute>
-                <Cart/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/payment"
-            element={
-              <ProtectedRoute>
-                <Payment/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/payment/rush"
-            element={
-              <ProtectedRoute>
-                <PaymentRush/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/:lang/payment/success"
-            element={
-              <ProtectedRoute>
-                <PaymentSuccess/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/:lang/payment/fail"
-            element={
-              <ProtectedRoute>
-                <PaymentFailure/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/search"
-            element={
-              <ProtectedRoute>
-                <Search/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/countries/:id"
-            element={
-              <ProtectedRoute>
-                <AllCountries/>
               </ProtectedRoute>
             }
           />
