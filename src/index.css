@@ -1,0 +1,339 @@
+/*@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");*/
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Manufacturing+Consent&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: "Be Vietnam Pro", system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f8fafc;
+  }
+}
+
+@layer components {
+  .mobile-container {
+    @apply max-w-sm mx-auto min-h-screen bg-white relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .status-bar {
+    @apply flex items-center justify-between px-6 py-2 text-sm font-medium bg-black text-white;
+  }
+  
+  .gradient-banner {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%);
+    @apply relative overflow-hidden;
+  }
+  
+  .country-card {
+    @apply flex flex-col items-center p-3 rounded-xl hover:bg-gray-50 transition-all duration-200 cursor-pointer bg-white border border-gray-100;
+  }
+  
+  .country-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .country-flag {
+    @apply w-14 h-14 rounded-full overflow-hidden mb-2 shadow-md border-2 border-white;
+  }
+  
+  .bottom-nav-tab {
+    @apply flex-1 flex flex-col items-center py-3 px-2 transition-all duration-200 relative;
+  }
+  
+  .bottom-nav-active {
+    @apply text-blue-500 bg-blue-50;
+  }
+  
+  .bottom-nav-inactive {
+    @apply text-gray-500 hover:text-gray-700 hover:bg-gray-50;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Confetti animation for success screen */
+  .confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f0f0f0; /* Default color */
+    opacity: 0;
+    animation: confetti-fall 3s ease-out forwards;
+  }
+  
+  .confetti:nth-child(1) {
+    left: 10%;
+    background-color: #ffeb3b;
+    animation-delay: 0s;
+  }
+  
+  .confetti:nth-child(2) {
+    left: 20%;
+    background-color: #ff9800;
+    animation-delay: 0.2s;
+  }
+  
+  .confetti:nth-child(3) {
+    left: 30%;
+    background-color: #e91e63;
+    animation-delay: 0.4s;
+  }
+  
+  .confetti:nth-child(4) {
+    left: 40%;
+    background-color: #4caf50;
+    animation-delay: 0.6s;
+  }
+  
+  .confetti:nth-child(5) {
+    left: 50%;
+    background-color: #2196f3;
+    animation-delay: 0.8s;
+  }
+  
+  .confetti:nth-child(6) {
+    left: 60%;
+    background-color: #9c27b0;
+    animation-delay: 1s;
+  }
+  
+  .confetti:nth-child(7) {
+    left: 70%;
+    background-color: #ff5722;
+    animation-delay: 1.2s;
+  }
+  
+  .confetti:nth-child(8) {
+    left: 80%;
+    background-color: #00bcd4;
+    animation-delay: 1.4s;
+  }
+  
+  @keyframes confetti-fall {
+    0% {
+      transform: translateY(-100px) rotate(0deg);
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(500px) rotate(720deg);
+      opacity: 0;
+    }
+  }
+}
+
+.custom-radio {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 2px solid #00627A;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+
+.custom-radio:checked {
+  background-color: #00627A;
+  border-color: #00627A;
+}
+
+.custom-radio:checked::after {
+  content: '✓';
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.rdrCalendarWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: 14px;
+  
+  .rdrMonths {
+    .rdrDays {
+      .rdrDay {
+      
+      }
+    }
+  }
+}
+
+.iccid-box {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  font-family: sans-serif;
+  font-size: 14px;
+  position: relative;
+  border: 1px solid transparent;
+}
+
+/* Góc vuông */
+.iccid-box::before,
+.iccid-box::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #2a7d8e;
+}
+
+.iccid-box::before {
+  top: -2px;
+  left: -2px;
+  border-bottom: none;
+  border-right: none;
+}
+
+.iccid-box::after {
+  bottom: -2px;
+  right: -2px;
+  border-top: none;
+  border-left: none;
+}
+
+/* Góc còn lại */
+.iccid-box span::before,
+.iccid-box span::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #2a7d8e;
+}
+
+.iccid-box span::before {
+  top: -2px;
+  right: -2px;
+  border-bottom: none;
+  border-left: none;
+}
+
+.iccid-box span::after {
+  bottom: -2px;
+  left: -2px;
+  border-top: none;
+  border-right: none;
+}
+
+.grecaptcha-badge {
+  bottom: 70px !important;
+  z-index: 9999;
+  opacity: 0;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 10s linear infinite;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  background-color: #fff;
+  border: 2px solid #00627A;
+}
+
+/* Radio */
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: relative;
+}
+
+input[type="radio"]:checked {
+  background-color: #00627A;
+  border-color: #00627A;
+}
+
+input[type="radio"]:checked::after {
+  content: "✓";
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px; /* góc vuông */
+  position: relative;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #00627A;
+  border-color: #00627A;
+}
+
+input[type="checkbox"]:checked::after {
+  content: "✓";
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,79 @@
+"use client"
+
+import type React from "react"
+import {X} from "lucide-react"
+import {useTranslation} from "react-i18next"
+
+interface StatusFilterModalProps {
+  isOpen: boolean
+  onClose: () => void
+  onSelectStatus: (status: "ALL" | "COMPLETED" | "PROCESSING" | "CANCEL" | "PAID") => void
+  selectedStatus: "ALL" | "COMPLETED" | "PROCESSING" | "CANCEL" | "PAID"
+}
+
+const StatusFilterModal: React.FC<StatusFilterModalProps> = ({isOpen, onClose, onSelectStatus, selectedStatus}) => {
+  const {t} = useTranslation()
+  
+  const statusOptions = [
+    {id: "ALL", label: t("history.status.all")},
+    {id: "COMPLETED", label: t("history.status.completed")},
+    {id: "PROCESSING", label: t("history.status.processing")},
+    {id: "CANCEL", label: t("history.status.cancel")},
+    {id: "PAID", label: t("history.status.paid")},
+  ]
+  
+  if (!isOpen) return null
+  
+  return (
+    <div className="fixed inset-0 z-50 flex items-end justify-center top-0 bottom-0 left-0 right-0">
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black bg-opacity-50" onClick={onClose}></div>
+      
+      {/* Modal */}
+      <div className="relative w-full max-w-sm bg-white rounded-t-2xl shadow-lg animate-slide-up max-h-[95vh]">
+        {/* Header */}
+        <div className="flex items-center justify-between p-4 border-b border-gray-200">
+          <button
+            onClick={onClose}
+            className="p-1 rounded-full hover:bg-gray-100 transition-colors"
+            aria-label={t("common.close")}
+          >
+            <X size={20} className="text-gray-600"/>
+          </button>
+          <h2 className="text-lg font-semibold text-gray-900">{t("history.filterStatus")}</h2>
+          <div className="w-8"></div>
+          {/* Placeholder for alignment */}
+        </div>
+        
+        {/* Status Options */}
+        <div className="max-h-96 overflow-y-auto p-4">
+          <div className="space-y-1">
+            {statusOptions.map((option) => (
+              <button
+                key={option.id}
+                onClick={() => {
+                  onSelectStatus(option.id as "ALL" | "COMPLETED" | "PROCESSING" | "CANCEL" | "PAID")
+                  onClose()
+                }}
+                className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors text-left"
+              >
+                <span className="text-base text-gray-800">{option.label}</span>
+                <input type="radio"
+                       name="date" className="custom-radio"
+                       onChange={() => onSelectStatus(option.id as "ALL" | "COMPLETED" | "PROCESSING" | "CANCEL" | "PAID")}
+                       checked={selectedStatus === option.id}/>
+              </button>
+            ))}
+          </div>
+        </div>
+        
+        {/* Top handle indicator */}
+         <div className="flex justify-center py-2 absolute -top-5 w-full">
+          <div className="w-12 h-1 bg-white rounded-full"></div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default StatusFilterModal
