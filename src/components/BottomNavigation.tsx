@@ -11,17 +11,17 @@ const BottomNavigation: React.FC = () => {
   
   const tabs = [
     {
-      id: "esim",
-      label: t("navigation.esim"),
-      icon: <img src="/assets/icon/bottom_chip.png" alt="Esim" className="w-6 h-6"/>,
-      iconActive: <img src="/assets/icon/bottom_chip-active.png" alt="Esim" className="w-6 h-6"/>,
+      id: "tasks",
+      label: t("navigation.tasks"),
+      icon: <img src="/assets/icon/bottom_chip.png" alt="tasks" className="w-6 h-6"/>,
+      iconActive: <img src="/assets/icon/bottom_chip-active.png" alt="tasks" className="w-6 h-6"/>,
       path: "/",
     },
     {
-      id: "myEsim",
-      label: t("navigation.myEsim"),
-      icon: <img src="/assets/icon/bottom_order.png" alt="Order" className="w-6 h-6"/>,
-      iconActive: <img src="/assets/icon/bottom_order-active.png" alt="Order" className="w-6 h-6"/>,
+      id: "leaderboard",
+      label: t("navigation.leaderboard"),
+      icon: <img src="/assets/icon/bottom_order.png" alt="leaderboard" className="w-6 h-6"/>,
+      iconActive: <img src="/assets/icon/bottom_order-active.png" alt="leaderboard" className="w-6 h-6"/>,
       path: "/history",
     },
     {
