@@ -29,7 +29,7 @@ const SimpleHeader: React.FC<SimpleHeaderProps> = observer(({title, noBack, noFi
   
   return (
     <header
-      className="fixed top-0 z-50 w-full flex items-center justify-between px-4 bg-gradient-to-l from-[#BF5435] to-[#FF9070] border-b border-gray-100 h-[70px] max-w-[428px]">
+      className="z-50 w-full flex items-center justify-between px-4 bg-gradient-to-l from-[#BF5435] to-[#FF9070] border-b border-gray-100 h-[70px] max-w-[428px] flex-shrink-0">
       <div className="flex items-center gap-2">
         {!noBack && (
           <button onClick={handleBack}

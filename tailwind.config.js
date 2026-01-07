@@ -136,10 +136,24 @@ module.exports = {
         sans: ["Be Vietnam Pro", "system-ui", "sans-serif"],
       },
       fontSize: {
-        tiny: ".6rem",
-        mini: ".625rem",
-        base: ".875rem",
-        normal: "1rem",
+        // Heading
+        h1: ['40px', { lineHeight: '46px' }],
+        h2: ['32px', { lineHeight: '38px' }],
+        h3: ['24px', { lineHeight: '30px' }],
+        h4: ['20px', { lineHeight: '26px' }],
+        h5: ['18px', { lineHeight: '24px' }],
+        
+        // Body
+        body1: ['16px', { lineHeight: '22px' }],
+        body2: ['14px', { lineHeight: '20px' }],
+        body3: ['12px', { lineHeight: '16px' }],
+        body4: ['10px', { lineHeight: '14px' }],
+        
+        // Giữ lại nếu đang dùng
+        tiny: '.6rem',
+        mini: '.625rem',
+        base: '.875rem',
+        normal: '1rem',
       },
       maxWidth: {
         sm: "428px",
