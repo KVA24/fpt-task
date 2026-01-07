@@ -10,7 +10,6 @@ import sha256 from 'crypto-js/sha256';
 import i18n from "i18next";
 import Profile from "@/pages/Profile.tsx";
 import {setAuthorization} from "@/api/apiCore.ts";
-import HistoryDetail from "@/pages/HistoryDetail.tsx";
 import {useGoogleReCaptcha} from "react-google-recaptcha-v3"
 import {useDisableZoom} from "@/hooks/useDisableZoom.ts";
 import {v4 as uuidv4} from "uuid";
@@ -122,18 +121,10 @@ const App: React.FC = observer(() => {
             }
           />
           <Route
-            path="/history"
+            path="/rank"
             element={
               <ProtectedRoute>
                 <History/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/history/:id"
-            element={
-              <ProtectedRoute>
-                <HistoryDetail/>
               </ProtectedRoute>
             }
           />

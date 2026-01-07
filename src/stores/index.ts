@@ -1,5 +1,5 @@
 import {authStore} from "./AuthStore"
-import {appStore} from "./AppStore"
+import {appStore} from "./taskStore.ts"
 import {cartStore} from "./CartStore.ts"
 import {orderStore} from "./OrderStore.ts";
 

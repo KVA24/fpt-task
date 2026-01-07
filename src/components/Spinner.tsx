@@ -8,8 +8,8 @@ interface LoadingProps {
    */
   size?: "sm" | "md" | "lg" | string
   /**
-   * Color of the spinner. Can be a Tailwind color class (e.g., 'text-blue-500').
-   * Defaults to 'text-blue-500'.
+   * Color of the spinner. Can be a Tailwind color class (e.g., 'text-primary-600').
+   * Defaults to 'text-primary-600'.
    */
   color?: string
   /**
@@ -19,7 +19,7 @@ interface LoadingProps {
   containerClassName?: string
 }
 
-const Spinner: React.FC<LoadingProps> = ({size = "md", color = "text-blue-500", className, containerClassName}) => {
+const Spinner: React.FC<LoadingProps> = ({size = "md", color = "text-primary-600", className, containerClassName}) => {
   const spinnerSizeClasses = {
     sm: "w-4 h-4 border-2",
     md: "w-5 h-5 border-2",

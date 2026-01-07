@@ -10,8 +10,8 @@ interface LoadingProps {
    */
   size?: "sm" | "md" | "lg" | string
   /**
-   * Color of the spinner. Can be a Tailwind color class (e.g., 'text-blue-500').
-   * Defaults to 'text-blue-500'.
+   * Color of the spinner. Can be a Tailwind color class (e.g., 'text-primary-600').
+   * Defaults to 'text-primary-600'.
    */
   color?: string
   /**

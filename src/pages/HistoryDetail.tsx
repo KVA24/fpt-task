@@ -163,7 +163,7 @@ const HistoryDetail: React.FC = () => {
               setCurrentView("detail")
               setSelectedProduct(null)
             }}
-                    className="flex items-center text-blue-500 hover:text-blue-600 transition-colors gap-2">
+                    className="flex items-center text-primary-600 hover:text-blue-600 transition-colors gap-2">
               <ChevronLeft size={24} className="mr-1"/>
             </button>
             <h1

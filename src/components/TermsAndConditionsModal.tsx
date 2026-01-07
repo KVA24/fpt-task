@@ -175,7 +175,7 @@ const TermsAndConditionsModal: React.FC<DeviceListModalProps> = ({isOpen, onClos
         <div className="flex items-center justify-between p-4 border-b border-gray-200">
           {currentView === "detail" ? (
             <button onClick={handleBack}
-                    className="flex items-center text-blue-500 hover:text-blue-600 transition-colors gap-2">
+                    className="flex items-center text-primary-600 hover:text-blue-600 transition-colors gap-2">
               <ChevronLeft size={24} className="mr-1"/>
             </button>
           ) : (

@@ -1,9 +1,9 @@
 import {APICore} from "@/api/apiCore.ts";
-import {appStore} from "@/stores/AppStore.ts";
+import {appStore} from "@/stores/taskStore.ts";
 
 const api = new APICore();
 
-class AppService {
+class TaskService {
   public getProfile() {
     const requestUrl = `/v1/shop/user/profile`;
     return api.get(requestUrl);
@@ -40,4 +40,4 @@ class AppService {
   }
 }
 
-export const appService = new AppService();
+export const appService = new TaskService();

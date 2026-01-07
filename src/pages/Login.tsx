@@ -29,7 +29,7 @@ const Login: React.FC = observer(() => {
       <div className="w-full max-w-sm">
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold mb-2">
-            <span className="text-blue-500">🌐Infi</span>
+            <span className="text-primary-600">🌐Infi</span>
             <span className="text-green-500">Gate</span>
           </h1>
           <p className="text-gray-600">Đăng nhập để tiếp tục</p>

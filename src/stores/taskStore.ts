@@ -1,5 +1,5 @@
 import {makeAutoObservable} from "mobx"
-import {appService} from "@/services/appService.ts";
+import {appService} from "@/services/taskService.ts";
 import {toastUtil} from "@/utils/toastUtil.ts";
 
 export interface Profile {
@@ -129,7 +129,7 @@ export interface Deviceslist {
   name: string
 }
 
-class AppStore {
+class TaskStore {
   isLoading = false
   isLocal: any = false
   keySearch = ""
@@ -223,4 +223,4 @@ class AppStore {
   }
 }
 
-export const appStore = new AppStore()
+export const appStore = new TaskStore()

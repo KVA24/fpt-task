@@ -52,7 +52,7 @@
   }
   
   .bottom-nav-active {
-    @apply text-blue-500 bg-blue-50;
+    @apply text-primary-600 bg-blue-50;
   }
   
   .bottom-nav-inactive {

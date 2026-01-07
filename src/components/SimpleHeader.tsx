@@ -41,7 +41,7 @@ const SimpleHeader: React.FC<SimpleHeaderProps> = observer(({title, noBack, noSe
       <div className="flex items-center gap-2">
         {!noBack && (
           <button onClick={handleBack}
-                  className="flex items-center text-blue-500 hover:text-blue-600 transition-colors gap-2">
+                  className="flex items-center text-primary-600 hover:text-blue-600 transition-colors gap-2">
             <ChevronLeft size={24} className="mr-1 text-black"/>
           </button>
         )}
