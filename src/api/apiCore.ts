@@ -4,8 +4,6 @@ import {toastUtil} from "@/utils/toastUtil.ts";
 
 // content type
 axios.defaults.headers.post['Content-Type'] = 'application/json';
-axios.defaults.headers.common['x-language-id'] = !localStorage.getItem('i18nextLng') ? 1 : (localStorage.getItem('i18nextLng') === "vi" ? 1 : 2);
-axios.defaults.headers.common['X-Channel-Code'] = appConfig.CHANNEL_CODE;
 axios.defaults.baseURL = appConfig.API_URL;
 
 const AUTH_NAME = 'wii-token';

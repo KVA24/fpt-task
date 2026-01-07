@@ -1,11 +1,11 @@
 import {authStore} from "./AuthStore"
-import {appStore} from "./taskStore.ts"
+import {taskStore} from "./taskStore.ts"
 import {cartStore} from "./CartStore.ts"
 import {orderStore} from "./OrderStore.ts";
 
 export const stores = {
   authStore,
-  appStore,
+  taskStore,
   cartStore,
   orderStore
 }

@@ -27,7 +27,7 @@ const Header: React.FC = observer(() => {
   const cartItemCount = cartStore.totalItems
   
   return (
-    <div className="fixed top-0 w-full z-50 max-w-[428px] h-[220px] bg-[url('/assets/images/bg-header.png')]
+    <div className="fixed top-0 w-full z-50 max-w-[428px] h-[200px] bg-[url('/assets/images/bg-header.svg')]
       bg-cover bg-center bg-no-repeat">
       {/* Main Header */}
       <header className="flex items-center justify-between px-4 bg-transparent h-[70px]">
