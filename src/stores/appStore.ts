@@ -70,6 +70,7 @@ export interface LeaderboardResponse {
 }
 
 class AppStore {
+  isAuthentication = false
   isLoading = false
   profile: Profile | null = null
   listCategory: CategoryList[] = []
@@ -86,8 +87,10 @@ class AppStore {
   getProfile = async () => {
     const result = await appService.getProfile()
     if (result.status === 200) {
+      this.isAuthentication = true
       this.profile = result.data
     } else {
+      this.isAuthentication = false
       this.profile = null
     }
   }
@@ -117,7 +120,11 @@ class AppStore {
   filterTasks = (
     taskCategoryId: number
   ): TaskItem[] => {
-    return this.listTask.filter(task => task.taskCategoryId === taskCategoryId)
+    if (taskCategoryId === -1) {
+      return this.listTask
+    } else {
+      return this.listTask.filter(task => task.taskCategoryId === taskCategoryId)
+    }
   }
   
   getLeaderBoard = async (isMe?: boolean) => {

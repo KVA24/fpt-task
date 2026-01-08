@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
 
-export const usePullToRefresh = (threshold = 200) => {
+export const usePullToRefresh = (threshold = 500) => {
   const [isPulling, setIsPulling] = useState(false);
   const [pullDistance, setPullDistance] = useState(0);
   const startY = useRef(0);

@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import {useTranslation} from "react-i18next"
 import {observer} from "mobx-react-lite"
 import {appStore, RankType} from "@/stores/appStore.ts";
@@ -12,6 +12,10 @@ const RankHeader: React.FC = observer(() => {
     setIsStatusModalOpen(true)
   }
   
+  useEffect(() => {
+    appStore.getLeaderBoard().then()
+  }, [appStore.rankType])
+  
   const handleBackApp = () => {
     window.location.href = "lotusmiles://backScreen"
   }
@@ -20,12 +24,12 @@ const RankHeader: React.FC = observer(() => {
   
   const handleSelectStatus = (status: RankType) => {
     appStore.rankType = status;
-    appStore.getLeaderBoard().then()
   }
+  
   
   return (
     <div
-      className={`w-full z-50 max-w-[428px] h-[auto] flex-shrink-0 bg-gradient-to-b from-[#FF815E] to-[#202939]`}>
+      className={`w-full z-50 max-w-[428px] h-[auto] flex-shrink-0 bg-gradient-to-b ${appStore.rankType === RankType.WEEKLY ? 'from-[#FF815E] to-[#202939]' : 'from-[#FF6167] to-[#131821]'}`}>
       {/* Main Header */}
       <header className="flex items-center justify-between px-4 bg-transparent h-[70px]">
         <div className="flex items-center gap-2">
@@ -134,6 +138,12 @@ const RankHeader: React.FC = observer(() => {
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="text-white text-6xl font-rankNumber">1</span>
                     </div>
+                    <div
+                      className="absolute bottom-full left-0 w-32 h-32 bg-gradient-to-b from-[transparent] to-[#ffffff4d] mb-4"
+                      style={{
+                        clipPath: "polygon(15% 100%, 0% 0%, 80% 0%, 65% 100%)",
+                      }}
+                    />
                     <div
                       className="absolute bottom-full left-0 w-32 h-4 bg-white/80"
                       style={{

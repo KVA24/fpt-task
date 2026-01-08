@@ -37,7 +37,7 @@ const useLanguageListener = () => {
 
 const App: React.FC = observer(() => {
   useLanguageListener()
-  const pullToRefresh = usePullToRefresh(200);
+  const pullToRefresh = usePullToRefresh(500);
   const {appStore} = stores
   
   useEffect(() => {
@@ -56,6 +56,8 @@ const App: React.FC = observer(() => {
     if (localStorage.getItem("wii-token")) {
       appStore.getProfile().then(() => {
       })
+    } else {
+    
     }
   }, []);
   

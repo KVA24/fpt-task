@@ -1,49 +1,49 @@
 import type React from "react"
-import {cn} from "@/utils/utils.ts"
-import Lottie from "lottie-react";
-import loadingAnimation from "@/components/icon/loading.json";
 
 interface LoadingProps {
-  /**
-   * Size of the spinner. Can be 'sm', 'md', 'lg', or a custom Tailwind size (e.g., 'w-5 h-5').
-   * Defaults to 'md'.
-   */
-  size?: "sm" | "md" | "lg" | string
-  /**
-   * Color of the spinner. Can be a Tailwind color class (e.g., 'text-primary-600').
-   * Defaults to 'text-primary-600'.
-   */
-  color?: string
-  /**
-   * Additional CSS classes for the spinner container.
-   */
-  className?: string
-  containerClassName?: string
+  size?: number
+  text?: string
 }
 
-const Loading: React.FC<LoadingProps> = ({size = "md", color = "text-red-500", className, containerClassName}) => {
-  const spinnerSizeClasses = {
-    sm: "w-4 h-4",
-    md: "w-5 h-5",
-    xl: "w-6 h-6",
-    lg: "w-8 h-8",
-  }
-  
-  const selectedSizeClass = spinnerSizeClasses[size as keyof typeof spinnerSizeClasses] || size
-  
+const Loading: React.FC<LoadingProps> = ({size = 32, text}) => {
   return (
-    <div className={cn("w-full flex items-center justify-center", containerClassName)}>
+    <div className="flex flex-col items-center justify-center gap-3 py-16">
       <div
-        className={cn(
-          selectedSizeClass,
-          color,
-          className,
-        )}
-        role="status"
-        aria-label="Loading"
+        className="relative"
+        style={{width: size, height: size}}
       >
-        <Lottie animationData={loadingAnimation} loop={true}/>
+        <div className="absolute inset-0 animate-spin">
+          <svg
+            width={size}
+            height={size}
+            viewBox="0 0 100 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#ef4444" stopOpacity="1"/>
+                <stop offset="50%" stopColor="#f87171" stopOpacity="0.8"/>
+                <stop offset="100%" stopColor="#fca5a5" stopOpacity="0.3"/>
+              </linearGradient>
+            </defs>
+            <path
+              d="M 50,10 A 40,40 0 0,1 90,50"
+              stroke="url(#gradient)"
+              strokeWidth="8"
+              strokeLinecap="round"
+              fill="none"
+            />
+          </svg>
+        </div>
       </div>
+      
+      {text ? (
+        <p className="text-sm text-gray-700 font-medium">{text}</p>
+      ) : (
+        <p className="text-sm text-gray-700 font-medium">Đang tải...</p>
+      )
+      }
     </div>
   )
 }
