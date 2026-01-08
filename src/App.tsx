@@ -13,6 +13,7 @@ import {useDisableZoom} from "@/hooks/useDisableZoom.ts";
 import Rank from "@/pages/Rank.tsx";
 import {usePullToRefresh} from "@/hooks/pullToRefresh.ts";
 import {PullToRefreshIndicator} from "@/components/PullToRefresgIndicator.tsx";
+import Loading from "@/components/Loading.tsx";
 
 const useLanguageListener = () => {
   useDisableZoom()
@@ -66,45 +67,51 @@ const App: React.FC = observer(() => {
       v7_startTransition: true,
       v7_relativeSplatPath: true
     }}>
-      <div className="App">
-        <PullToRefreshIndicator {...pullToRefresh} />
-        <Routes>
-          <Route
-            path="/"
-            index
-            element={
-              <ProtectedRoute>
-                <Home/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/history"
-            index
-            element={
-              <ProtectedRoute>
-                <History/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/rank"
-            element={
-              <ProtectedRoute>
-                <Rank/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <Profile/>
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-      </div>
+      {appStore.isLoadingAuthen ?
+        <div className='h-[100vh]'>
+          <Loading size={80}/>
+        </div>
+        :
+        <div className="App">
+          <PullToRefreshIndicator {...pullToRefresh} />
+          <Routes>
+            <Route
+              path="/"
+              index
+              element={
+                <ProtectedRoute>
+                  <Home/>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/history"
+              index
+              element={
+                <ProtectedRoute>
+                  <History/>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/rank"
+              element={
+                <ProtectedRoute>
+                  <Rank/>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile/>
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </div>
+      }
       <ToastContainer limit={1} style={{marginTop: 70}}/>
     </Router>
   )

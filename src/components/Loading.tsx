@@ -7,7 +7,7 @@ interface LoadingProps {
 
 const Loading: React.FC<LoadingProps> = ({size = 32, text}) => {
   return (
-    <div className="flex flex-col items-center justify-center gap-3 py-16">
+    <div className="flex flex-col items-center justify-center gap-3 h-full">
       <div
         className="relative"
         style={{width: size, height: size}}

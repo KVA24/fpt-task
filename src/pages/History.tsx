@@ -146,7 +146,7 @@ const History: React.FC = observer(() => {
                   {filteredTasks.length > 0 ? (
                     filteredTasks.map((task) => (
                       <div key={task.id} className="bg-gray-50 rounded-lg p-4 space-y-3 border border-gray-200">
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-3 border-b-2 pb-4 border-dashed">
                           <img src="/assets/icon/badge.svg" alt="Zap" className="w-6 h-6"/>
                           <h3 className="text-body2 font-medium text-gray-900 flex-1 pt-1">{task.name}</h3>
                         </div>

@@ -72,6 +72,7 @@ export interface LeaderboardResponse {
 class AppStore {
   isAuthentication = false
   isLoading = false
+  isLoadingAuthen = false
   profile: Profile | null = null
   listCategory: CategoryList[] = []
   listTask: TaskItem[] = []
@@ -85,7 +86,9 @@ class AppStore {
   }
   
   getProfile = async () => {
+    this.isLoadingAuthen = true
     const result = await appService.getProfile()
+    this.isLoadingAuthen = false
     if (result.status === 200) {
       this.isAuthentication = true
       this.profile = result.data
