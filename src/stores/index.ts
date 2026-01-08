@@ -1,13 +1,9 @@
 import {authStore} from "./AuthStore"
-import {taskStore} from "./taskStore.ts"
-import {cartStore} from "./CartStore.ts"
-import {orderStore} from "./OrderStore.ts";
+import {appStore} from "./appStore.ts"
 
 export const stores = {
   authStore,
-  taskStore,
-  cartStore,
-  orderStore
+  appStore,
 }
 
 export type RootStore = typeof stores

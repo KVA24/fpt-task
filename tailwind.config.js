@@ -8,7 +8,7 @@ module.exports = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
-          900: '#00627A',
+          900: '#FE592A',
           800: '#440607',
           700: '#FD3C12',
           600: '#FE592A',
@@ -134,6 +134,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["Be Vietnam Pro", "system-ui", "sans-serif"],
+        rankNumber: ["Rank Number Font", "system-ui", "sans-serif"],
       },
       fontSize: {
         // Heading

@@ -10,6 +10,9 @@ import i18n from "i18next";
 import Profile from "@/pages/Profile.tsx";
 import {setAuthorization} from "@/api/apiCore.ts";
 import {useDisableZoom} from "@/hooks/useDisableZoom.ts";
+import Rank from "@/pages/Rank.tsx";
+import {usePullToRefresh} from "@/hooks/pullToRefresh.ts";
+import {PullToRefreshIndicator} from "@/components/PullToRefresgIndicator.tsx";
 
 const useLanguageListener = () => {
   useDisableZoom()
@@ -34,7 +37,8 @@ const useLanguageListener = () => {
 
 const App: React.FC = observer(() => {
   useLanguageListener()
-  const {taskStore} = stores
+  const pullToRefresh = usePullToRefresh(200);
+  const {appStore} = stores
   
   useEffect(() => {
     const init = async () => {
@@ -50,10 +54,7 @@ const App: React.FC = observer(() => {
   
   useEffect(() => {
     if (localStorage.getItem("wii-token")) {
-      taskStore.getProfile().then(() => {
-        taskStore.getAllCategory().then(() => {
-          taskStore.getAllTask().then()
-        })
+      appStore.getProfile().then(() => {
       })
     }
   }, []);
@@ -64,6 +65,7 @@ const App: React.FC = observer(() => {
       v7_relativeSplatPath: true
     }}>
       <div className="App">
+        <PullToRefreshIndicator {...pullToRefresh} />
         <Routes>
           <Route
             path="/"
@@ -75,10 +77,19 @@ const App: React.FC = observer(() => {
             }
           />
           <Route
-            path="/rank"
+            path="/history"
+            index
             element={
               <ProtectedRoute>
                 <History/>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/rank"
+            element={
+              <ProtectedRoute>
+                <Rank/>
               </ProtectedRoute>
             }
           />

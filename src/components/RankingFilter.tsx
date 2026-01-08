@@ -3,22 +3,21 @@
 import type React from "react"
 import {X} from "lucide-react"
 import {useTranslation} from "react-i18next"
+import {RankType} from "@/stores/appStore.ts";
 
 interface StatusFilterModalProps {
   isOpen: boolean
   onClose: () => void
-  onSelectStatus: (status: "ALL" | "COMPLETED" | "PROCESSING" | "CANCEL" | "PAID") => void
-  selectedStatus: "ALL" | "COMPLETED" | "PROCESSING" | "CANCEL" | "PAID"
+  onSelectStatus: (status: RankType) => void
+  selectedStatus: RankType
 }
 
-const StatusFilterModal: React.FC<StatusFilterModalProps> = ({isOpen, onClose, onSelectStatus, selectedStatus}) => {
+const RankFilter: React.FC<StatusFilterModalProps> = ({isOpen, onClose, onSelectStatus, selectedStatus}) => {
   const {t} = useTranslation()
   
   const statusOptions = [
-    {id: "ALL", label: t("history.status.all")},
-    {id: "GIVEN", label: t("history.status.given")},
-    {id: "NOTGIVEN", label: t("history.status.notGiven")},
-    {id: "EXPIRED", label: t("history.status.exPried")},
+    {id: RankType.WEEKLY, label: t("history.status.weekly")},
+    {id: RankType.MONTHLY, label: t("history.status.monthly")},
   ]
   
   if (!isOpen) return null
@@ -51,7 +50,7 @@ const StatusFilterModal: React.FC<StatusFilterModalProps> = ({isOpen, onClose, o
               <button
                 key={option.id}
                 onClick={() => {
-                  onSelectStatus(option.id as "ALL" | "COMPLETED" | "PROCESSING" | "CANCEL" | "PAID")
+                  onSelectStatus(option.id as RankType)
                   onClose()
                 }}
                 className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors text-left"
@@ -59,7 +58,7 @@ const StatusFilterModal: React.FC<StatusFilterModalProps> = ({isOpen, onClose, o
                 <span className="text-base text-gray-800">{option.label}</span>
                 <input type="radio"
                        name="date" className="custom-radio"
-                       onChange={() => onSelectStatus(option.id as "ALL" | "COMPLETED" | "PROCESSING" | "CANCEL" | "PAID")}
+                       onChange={() => onSelectStatus(option.id as RankType)}
                        checked={selectedStatus === option.id}/>
               </button>
             ))}
@@ -75,4 +74,4 @@ const StatusFilterModal: React.FC<StatusFilterModalProps> = ({isOpen, onClose, o
   )
 }
 
-export default StatusFilterModal
+export default RankFilter

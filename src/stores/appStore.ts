@@ -1,5 +1,5 @@
 import {makeAutoObservable} from "mobx"
-import {appService} from "@/services/taskService.ts";
+import {appService} from "@/services/appService.ts";
 import {toastUtil} from "@/utils/toastUtil.ts";
 
 export interface WalletItem {
@@ -46,11 +46,38 @@ export interface TaskItem {
 }
 
 
-class TaskStore {
+export enum RankType {
+  DAILY = "DAILY",
+  WEEKLY = "WEEKLY",
+  MONTHLY = "MONTHLY"
+}
+
+export interface LeaderboardEntry {
+  rank: number
+  userId: string
+  externalId: string
+  displayName: string
+  avatarUrl: string
+  score: number
+}
+
+export interface LeaderboardResponse {
+  period: RankType
+  periodStart: string
+  periodEnd: string
+  entries: LeaderboardEntry[]
+  totalUsers: number
+}
+
+class AppStore {
   isLoading = false
   profile: Profile | null = null
   listCategory: CategoryList[] = []
   listTask: TaskItem[] = []
+  rankType: RankType = RankType.WEEKLY
+  leaderBoardResponse: LeaderboardResponse | null = null
+  leaderBoard: LeaderboardEntry[] | null = []
+  leaderBoardMe: LeaderboardEntry[] | null = []
   
   constructor() {
     makeAutoObservable(this)
@@ -70,7 +97,6 @@ class TaskStore {
     const result = await appService.getAllCategory()
     this.isLoading = false
     if (result.status === 200) {
-      console.log(result.data)
       this.listCategory = result.data.data
     } else {
       toastUtil.error(result.data.message, 99)
@@ -82,18 +108,37 @@ class TaskStore {
     const result = await appService.getAllTask()
     this.isLoading = false
     if (result.status === 200) {
-      console.log(result.data)
       this.listTask = result.data.data
     } else {
       toastUtil.error(result.data.message, 99)
     }
   }
   
-  filterTasksByCategoryId = (
+  filterTasks = (
     taskCategoryId: number
   ): TaskItem[] => {
     return this.listTask.filter(task => task.taskCategoryId === taskCategoryId)
   }
+  
+  getLeaderBoard = async (isMe?: boolean) => {
+    this.isLoading = true
+    const result = await appService.getLeaderBoard(this.rankType)
+    this.isLoading = false
+    if (result.status === 200) {
+      this.leaderBoardResponse = result.data.data
+      if (isMe) {
+        this.leaderBoardMe = result.data.data
+      } else {
+        this.leaderBoard = result.data.data.entries
+      }
+      console.log(this.leaderBoardResponse)
+      console.log(this.leaderBoard)
+    } else {
+      this.leaderBoard = null
+      this.leaderBoardMe = null
+      toastUtil.error(result.data.message, 99)
+    }
+  }
 }
 
-export const taskStore = new TaskStore()
+export const appStore = new AppStore()

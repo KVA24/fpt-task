@@ -25,7 +25,8 @@
   "navigation": {
     "tasks": "Tasks",
     "leaderboard": "LeaderBoard",
-    "profile": "Profile"
+    "profile": "Profile",
+    "history": "Lịch sử hoàn thành nhiệm vụ"
   },
   "auth": {
     "login": "Login",
@@ -36,5 +37,36 @@
     "confirmEmailNotMatch": "Confirm email not match!",
     "password": "Password",
     "guide": "Please log in to access all features."
+  },
+  "history": {
+    "filterTime": "Time",
+    "filterStatus": "Status",
+    "noHistory": "No purchase history yet",
+    "status": {
+      "all": "View All",
+      "success": "Successful",
+      "completed": "Completed",
+      "processing": "Processing",
+      "failed": "Failed",
+      "cancel": "Cancelled",
+      "paid": "Paid",
+      "exPried": "Expired",
+      "given": "Đã nhận điểm",
+      "notGiven": "Chưa nhận điểm",
+      "daily":"Theo ngày",
+      "weekly":"Theo tuần",
+      "monthly": "Theo tháng",
+      "SUCCESS": "Successful",
+      "COMPLETED": "Completed",
+      "PROCESSING": "Processing",
+      "FAILED": "Failed",
+      "CANCEL": "Cancelled",
+      "PAID": "Paid",
+      "ACTIVE": "Active",
+      "NOT_ACTIVE": "Not active",
+      "FINISHED": "Finished",
+      "UNKNOWN": "Unknow",
+      "EXPIRED": "Expired"
+    }
   }
 }

@@ -2,13 +2,15 @@ import React, {useState} from "react"
 import {useTranslation} from "react-i18next"
 import {useNavigate} from "react-router-dom"
 import {observer} from "mobx-react-lite"
-import {stores} from "@/stores"
 import LanguageListModal from "@/components/LanguageListModal.tsx"
 
-const Header: React.FC = observer(() => {
+interface HeaderProps {
+  noFilter?: boolean
+}
+
+const Header: React.FC<HeaderProps> = observer(({noFilter}) => {
   const {t} = useTranslation()
   const navigate = useNavigate()
-  const {cartStore} = stores
   const [isLanguageListModalOpen, setIsLanguageModalOpen] = useState(false)
   
   const handleClick = () => {
@@ -18,8 +20,6 @@ const Header: React.FC = observer(() => {
   const handleBackApp = () => {
     window.location.href = "lotusmiles://backScreen"
   }
-  
-  const cartItemCount = cartStore.totalItems
   
   return (
     <div
@@ -31,20 +31,16 @@ const Header: React.FC = observer(() => {
         </div>
         
         <div className="flex items-center">
-          <button className="pr-2 rounded-full transition-colors relative"
-                  aria-label={t("common.cart")}
-                  onClick={handleClick}>
-            <img src="/assets/icon/file.svg" alt="Search"/>
-            {cartItemCount > 0 && (
-              <span
-                className="absolute top-[2px] right-[6px] bg-red-500 text-white text-tiny rounded-full h-4 w-4 flex items-center justify-center">
-                {cartItemCount > 99 ? "99+" : cartItemCount}
-              </span>
-            )}
-          </button>
+          {!noFilter && (
+            <button className="pr-2 transition-colors relative border-r border-white"
+                    aria-label={t("common.cart")}
+                    onClick={handleClick}>
+              <img src="/assets/icon/file.svg" alt="Search"/>
+            </button>
+          )}
           
           <button onClick={handleBackApp}
-                  className="pl-2 transition-colors border-l border-white"
+                  className="pl-2 transition-colors"
                   aria-label={t("common.close")}>
             <img src="/assets/icon/close.svg" alt="Close"/>
           </button>

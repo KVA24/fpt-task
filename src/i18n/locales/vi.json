@@ -25,7 +25,8 @@
   "navigation": {
     "tasks": "Nhiệm vụ",
     "leaderboard": "Bảng xếp hạng",
-    "profile": "Cá nhân"
+    "profile": "Cá nhân",
+    "history": "Lịch sử hoàn thành nhiệm vụ"
   },
   "auth": {
     "login": "Đăng nhập",
@@ -36,5 +37,36 @@
     "confirmEmailNotMatch": "Email xác nhận không trùng khớp!",
     "password": "Mật khẩu",
     "guide": "Vui lòng đăng nhập để sử dụng đầy đủ tính năng tài khoản"
+  },
+  "history": {
+    "filterTime": "Thời gian",
+    "filterStatus": "Trạng thái",
+    "noHistory": "Chưa có lịch sử mua hàng",
+    "status": {
+      "all": "Tất cả",
+      "success": "Thành công",
+      "completed": "Hoàn thành",
+      "processing": "Đang xử lý",
+      "failed": "Thất bại",
+      "cancel": "Hủy",
+      "paid": "Đã thanh toán",
+      "exPried": "Hết hạn",
+      "given": "Đã nhận điểm",
+      "notGiven": "Chưa nhận điểm",
+      "daily":"Theo ngày",
+      "weekly":"Theo tuần",
+      "monthly": "Theo tháng",
+      "SUCCESS": "Thành công",
+      "COMPLETED": "Hoàn thành",
+      "PROCESSING": "Đang xử lý",
+      "FAILED": "Thất bại",
+      "CANCEL": "Hủy",
+      "PAID": "Đã thanh toán",
+      "ACTIVE": "Đã kích hoạt",
+      "NOT_ACTIVE": "Chưa kích hoạt",
+      "FINISHED": "Kết thúc",
+      "UNKNOWN": "Chưa rõ",
+      "EXPIRED": "Hết hạn"
+    }
   }
 }

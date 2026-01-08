@@ -13,9 +13,17 @@ interface SimpleHeaderProps {
   noCart?: boolean
   noClose?: boolean
   noHome?: boolean
+  onClickFilter?: () => void
 }
 
-const SimpleHeader: React.FC<SimpleHeaderProps> = observer(({title, noBack, noFilter, noClose, noHome}) => {
+const SimpleHeader: React.FC<SimpleHeaderProps> = observer(({
+                                                              title,
+                                                              noBack,
+                                                              noFilter,
+                                                              noClose,
+                                                              noHome,
+                                                              onClickFilter
+                                                            }) => {
   const {t} = useTranslation()
   const navigate = useNavigate()
   
@@ -23,8 +31,8 @@ const SimpleHeader: React.FC<SimpleHeaderProps> = observer(({title, noBack, noFi
     navigate(-1)
   }
   
-  const handleSearchClick = () => {
-    navigate("/search")
+  const handleBackApp = () => {
+    window.location.href = "lotusmiles://backScreen"
   }
   
   return (
@@ -43,8 +51,8 @@ const SimpleHeader: React.FC<SimpleHeaderProps> = observer(({title, noBack, noFi
       <div className="flex items-center">
         {!noFilter && (
           <button
-            onClick={handleSearchClick}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            onClick={onClickFilter}
+            className="p-2 rounded-full transition-colors"
             aria-label={t("common.search")}
           >
             <img src="/assets/icon/filter.svg" alt="Search"/>
@@ -52,10 +60,11 @@ const SimpleHeader: React.FC<SimpleHeaderProps> = observer(({title, noBack, noFi
         )}
         
         {!noClose && (
-          // <button className="p-2 hover:bg-gray-100 rounded-full transition-colors" aria-label={t("common.close")}>
-          //   <img src="/assets/icon/close.png" alt="Close"/>
-          // </button>
-          <></>
+          <button onClick={handleBackApp}
+                  className="pl-2 transition-colors border-l border-white"
+                  aria-label={t("common.close")}>
+            <img src="/assets/icon/close.svg" alt="Close"/>
+          </button>
         )}
         
         {!noHome && (

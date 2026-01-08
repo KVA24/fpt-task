@@ -318,3 +318,13 @@ export function formatData(mb: number, decimal = 1) {
   const gb = mb / 1024;
   return Number.isInteger(gb) ? gb.toString() : gb.toFixed(decimal);
 }
+
+export const getRandomAvatar = () => {
+  const DEFAULT_AVATARS = [
+    '/assets/images/avatar_1.svg',
+    '/assets/images/avatar_2.svg',
+    '/assets/images/avatar_3.svg',
+    '/assets/images/avatar_4.svg',
+  ]
+  return DEFAULT_AVATARS[Math.floor(Math.random() * DEFAULT_AVATARS.length)]
+}

@@ -3,7 +3,7 @@
 import React, {useMemo, useState} from "react"
 import {ChevronLeft, ChevronRight, X} from "lucide-react"
 import {useTranslation} from "react-i18next"
-import {CarrierList, ProductGroupList} from "@/stores/taskStore.ts";
+import {CarrierList, ProductGroupList} from "@/stores/appStore.ts";
 
 interface DeviceListModalProps {
   isOpen: boolean
