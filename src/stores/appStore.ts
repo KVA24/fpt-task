@@ -141,8 +141,6 @@ class AppStore {
       } else {
         this.leaderBoard = result.data.data.entries
       }
-      console.log(this.leaderBoardResponse)
-      console.log(this.leaderBoard)
     } else {
       this.leaderBoard = null
       this.leaderBoardMe = null

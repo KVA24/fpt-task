@@ -4,6 +4,7 @@ import {observer} from "mobx-react-lite"
 import {appStore, RankType} from "@/stores/appStore.ts";
 import RankFilter from "@/components/RankingFilter.tsx";
 import {getRandomAvatar} from "@/utils/utils.ts";
+import {Tooltip} from 'react-tooltip'
 
 const RankHeader: React.FC = observer(() => {
   const {t} = useTranslation()
@@ -88,7 +89,7 @@ const RankHeader: React.FC = observer(() => {
               <div
                 className={`w-12 h-12 rounded-full flex items-center justify-center text-3xl mb-3 shadow-lg`}>
                 <img
-                  src={appStore.leaderBoard[0].avatarUrl || getRandomAvatar()}
+                  src={appStore.leaderBoard[1].avatarUrl || getRandomAvatar()}
                   alt="avatar"
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -96,9 +97,11 @@ const RankHeader: React.FC = observer(() => {
                   }}
                 />
               </div>
-              <div className="text-white text-body2 font-semibold mb-1 text-center overflow-hidden text-ellipsis whitespace-nowrap w-[100px]">{appStore.leaderBoard[0].displayName}</div>
+              <div data-tooltip-id="rank-2" data-tooltip-content={appStore.leaderBoard[1].displayName}
+                   className="text-white text-body2 font-semibold mb-1 text-center overflow-hidden text-ellipsis whitespace-nowrap w-[100px]">{appStore.leaderBoard[0].displayName}</div>
+              <Tooltip id={"rank-2"}/>
               <div
-                className="text-white text-body3 border border-white/20 bg-black/20 px-2 py-1 rounded-md mb-6">{appStore.leaderBoard[0].score.toLocaleString()}</div>
+                className="text-white text-body3 border border-white/20 bg-black/20 px-2 py-1 rounded-md mb-6">{appStore.leaderBoard[1].score.toLocaleString()}</div>
               <div className="flex flex-col items-center">
                 <div className="perspective" style={{perspective: "1000px"}}>
                   <div
@@ -122,7 +125,7 @@ const RankHeader: React.FC = observer(() => {
               <div
                 className={`w-12 h-12 rounded-full flex items-center justify-center text-4xl mb-3 shadow-lg`}>
                 <img
-                  src={appStore.leaderBoard[1].avatarUrl || getRandomAvatar()}
+                  src={appStore.leaderBoard[0].avatarUrl || getRandomAvatar()}
                   alt="avatar"
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -130,9 +133,11 @@ const RankHeader: React.FC = observer(() => {
                   }}
                 />
               </div>
-              <div className="text-white text-body2 font-semibold mb-1 text-center overflow-hidden text-ellipsis whitespace-nowrap w-[100px]">{appStore.leaderBoard[1].displayName}</div>
+              <div data-tooltip-id="rank-1" data-tooltip-content={appStore.leaderBoard[0].displayName}
+                   className="text-white text-body2 font-semibold mb-1 text-center overflow-hidden text-ellipsis whitespace-nowrap w-[100px] z-50">{appStore.leaderBoard[0].displayName}</div>
+              <Tooltip id={"rank-1"} className="z-50"/>
               <div
-                className="text-white text-body3 border border-white/20 bg-black/20 px-2 py-1 rounded-md mb-6">{appStore.leaderBoard[1].score.toLocaleString()}</div>
+                className="text-white text-body3 border border-white/20 bg-black/20 px-2 py-1 rounded-md mb-6">{appStore.leaderBoard[0].score.toLocaleString()}</div>
               <div className="flex flex-col items-center">
                 <div className="perspective" style={{perspective: "1000px"}}>
                   <div
@@ -162,7 +167,7 @@ const RankHeader: React.FC = observer(() => {
               <div
                 className={`w-12 h-12 rounded-full flex items-center justify-center text-3xl mb-3 shadow-lg`}>
                 <img
-                  src={appStore.leaderBoard[1].avatarUrl || getRandomAvatar()}
+                  src={appStore.leaderBoard[2].avatarUrl || getRandomAvatar()}
                   alt="avatar"
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -170,7 +175,9 @@ const RankHeader: React.FC = observer(() => {
                   }}
                 />
               </div>
-              <div className="text-white text-body2 font-semibold mb-1 text-center overflow-hidden text-ellipsis whitespace-nowrap w-[100px]">{appStore.leaderBoard[2].displayName}</div>
+              <div data-tooltip-id="rank-3" data-tooltip-content={appStore.leaderBoard[2].displayName}
+                   className="text-white text-body2 font-semibold mb-1 text-center overflow-hidden text-ellipsis whitespace-nowrap w-[100px]">{appStore.leaderBoard[2].displayName}</div>
+              <Tooltip id={"rank-3"}/>
               <div
                 className="text-white text-body3 border border-white/20 bg-black/20 px-2 py-1 rounded-md mb-6">{appStore.leaderBoard[2].score.toLocaleString()}</div>
               <div className="flex flex-col items-center">
