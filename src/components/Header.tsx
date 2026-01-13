@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import {useTranslation} from "react-i18next"
-import {useNavigate} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import {observer} from "mobx-react-lite"
 import LanguageListModal from "@/components/LanguageListModal.tsx"
 
@@ -26,9 +26,9 @@ const Header: React.FC<HeaderProps> = observer(({noFilter}) => {
       className="w-full z-50 max-w-[428px] h-[200px] bg-[url('/assets/images/bg-header.svg')] bg-cover bg-center bg-no-repeat flex-shrink-0">
       {/* Main Header */}
       <header className="flex items-center justify-between px-4 bg-transparent h-[70px]">
-        <div className="flex items-center gap-2">
+        <Link to={"/"} className="flex items-center gap-2">
           <img src="/assets/icon/fpt_logo.svg" alt="Logo" className="w-[141px] h-[44px]"/>
-        </div>
+        </Link>
         
         <div className="flex items-center">
           {!noFilter && (

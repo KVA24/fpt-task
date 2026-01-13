@@ -26,7 +26,9 @@
     "tasks": "Tasks",
     "leaderboard": "LeaderBoard",
     "profile": "Profile",
-    "history": "Lịch sử hoàn thành nhiệm vụ"
+    "history": "Lịch sử hoàn thành nhiệm vụ",
+    "historyProfile": "Lịch sử điểm",
+    "reward": "Quà"
   },
   "auth": {
     "login": "Login",

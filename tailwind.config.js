@@ -167,6 +167,11 @@ module.exports = {
         md: "8px",
         sm: "4px",
       },
+      boxShadow: {
+        'inner-sm': 'inset 0 1px 2px rgba(0,0,0,0.15)',
+        'inner-md': 'inset 0 3px 6px rgba(0,0,0,0.25)',
+        'inner-lg': 'inset 0 6px 12px rgba(0,0,0,0.35)',
+      }
     },
   },
   plugins: [

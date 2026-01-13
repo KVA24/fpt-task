@@ -64,6 +64,13 @@ const Home: React.FC = observer(() => {
     scrollContainerRef.current.scrollLeft = scrollLeft - walk
   }
   
+  const getStatusButtonClass = (task: TaskItem) => {
+    if (task.isCompleted) {
+      return "bg-green-300 text-green-600 shadow-md"
+    }
+    return "bg-[#E07B5A] text-white"
+  }
+  
   const getStatusButtonText = (task: TaskItem) => {
     if (task.isCompleted) {
       return "Đã thực hiện"
@@ -71,12 +78,6 @@ const Home: React.FC = observer(() => {
     return "Thực hiện"
   }
   
-  const getStatusButtonClass = (task: TaskItem) => {
-    if (task.isCompleted) {
-      return "bg-green-300 text-green-600 shadow-md"
-    }
-    return "bg-[#E07B5A] text-white"
-  }
   return (
     <div className="mobile-container flex flex-col h-screen overflow-hidden">
       {/* Header - Fixed at top */}

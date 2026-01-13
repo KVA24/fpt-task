@@ -3,7 +3,7 @@
 import type React from "react"
 import {ChevronLeft} from "lucide-react"
 import {useTranslation} from "react-i18next"
-import {useNavigate} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import {observer} from "mobx-react-lite"
 
 interface SimpleHeaderProps {
@@ -13,6 +13,7 @@ interface SimpleHeaderProps {
   noCart?: boolean
   noClose?: boolean
   noHome?: boolean
+  noLogo?: boolean
   onClickFilter?: () => void
 }
 
@@ -22,6 +23,7 @@ const SimpleHeader: React.FC<SimpleHeaderProps> = observer(({
                                                               noFilter,
                                                               noClose,
                                                               noHome,
+                                                              noLogo,
                                                               onClickFilter
                                                             }) => {
   const {t} = useTranslation()
@@ -39,6 +41,12 @@ const SimpleHeader: React.FC<SimpleHeaderProps> = observer(({
     <header
       className="z-50 w-full flex items-center justify-between px-4 bg-gradient-to-l from-[#BF5435] to-[#FF9070] border-b border-gray-100 h-[70px] max-w-[428px] flex-shrink-0">
       <div className="flex items-center gap-2">
+        {!noLogo && (
+          <Link to={"/"} className="flex items-center gap-2">
+            <img src="/assets/icon/fpt_logo.svg" alt="Logo" className="w-[141px] h-[44px]"/>
+          </Link>
+        )}
+        
         {!noBack && (
           <button onClick={handleBack}
                   className="flex items-center text-primary-600 transition-colors gap-2">
@@ -52,7 +60,7 @@ const SimpleHeader: React.FC<SimpleHeaderProps> = observer(({
         {!noFilter && (
           <button
             onClick={onClickFilter}
-            className="p-2 rounded-full transition-colors"
+            className="p-2 rounded-full transition-colors border-r border-white"
             aria-label={t("common.search")}
           >
             <img src="/assets/icon/filter.svg" alt="Search"/>
@@ -61,7 +69,7 @@ const SimpleHeader: React.FC<SimpleHeaderProps> = observer(({
         
         {!noClose && (
           <button onClick={handleBackApp}
-                  className="pl-2 transition-colors border-l border-white"
+                  className="pl-2 transition-colors"
                   aria-label={t("common.close")}>
             <img src="/assets/icon/close.svg" alt="Close"/>
           </button>

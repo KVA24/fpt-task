@@ -2,6 +2,12 @@ import {makeAutoObservable} from "mobx"
 import {appService} from "@/services/appService.ts";
 import {toastUtil} from "@/utils/toastUtil.ts";
 
+export enum TabProfile {
+  task = "task",
+  history = "history",
+  reward = "reward"
+}
+
 export interface WalletItem {
   id: string
   code: string
@@ -69,7 +75,15 @@ export interface LeaderboardResponse {
   totalUsers: number
 }
 
+export interface LeaderboardMe {
+  inTopN: boolean
+  period: string
+  rank: number
+  score: number
+}
+
 class AppStore {
+  rankLimit: number = 50
   isAuthentication = false
   isLoading = false
   isLoadingAuthen = false
@@ -79,7 +93,8 @@ class AppStore {
   rankType: RankType = RankType.WEEKLY
   leaderBoardResponse: LeaderboardResponse | null = null
   leaderBoard: LeaderboardEntry[] | null = []
-  leaderBoardMe: LeaderboardEntry[] | null = []
+  leaderBoardMe: LeaderboardMe | null = null
+  tabProfile: TabProfile | string = TabProfile.task
   
   constructor() {
     makeAutoObservable(this)
@@ -91,7 +106,7 @@ class AppStore {
     this.isLoadingAuthen = false
     if (result.status === 200) {
       this.isAuthentication = true
-      this.profile = result.data
+      this.profile = result.data.data
     } else {
       this.isAuthentication = false
       this.profile = null
@@ -132,7 +147,7 @@ class AppStore {
   
   getLeaderBoard = async (isMe?: boolean) => {
     this.isLoading = true
-    const result = await appService.getLeaderBoard(this.rankType)
+    const result = await appService.getLeaderBoard(this.rankType, isMe)
     this.isLoading = false
     if (result.status === 200) {
       this.leaderBoardResponse = result.data.data

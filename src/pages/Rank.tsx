@@ -1,6 +1,6 @@
 "use client"
 
-import React, {Fragment} from "react"
+import React, {Fragment, useRef} from "react"
 import {observer} from "mobx-react-lite"
 import BottomNavigation from "@/components/BottomNavigation"
 import {useScrollToTop} from "@/hooks/useScrollToTop.ts";
@@ -9,15 +9,39 @@ import {appStore} from "@/stores/appStore.ts";
 import {getRandomAvatar} from "@/utils/utils.ts";
 import NoContent from "@/components/NoContent.tsx";
 import Loading from "@/components/Loading.tsx";
+import {ChevronsDown} from "lucide-react";
 
 const Rank: React.FC = observer(() => {
   useScrollToTop()
+  
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  
+  const userRank = appStore.leaderBoardMe?.rank || null
+  
+  const handleFloatingButtonClick = () => {
+    if (!scrollContainerRef.current) return
+    
+    if (userRank && userRank <= appStore.rankLimit) {
+      const userRankElement = scrollContainerRef.current.querySelector('[data-rank-id="user-rank"]')
+      if (userRankElement) {
+        userRankElement.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        })
+      }
+    } else {
+      scrollContainerRef.current.scrollTo({
+        top: scrollContainerRef.current.scrollHeight,
+        behavior: "smooth",
+      })
+    }
+  }
   
   return (
     <div className="mobile-container flex flex-col h-screen overflow-hidden">
       <RankHeader/>
       
-      <main className="flex-1 overflow-y-auto no-scrollbar">
+      <main className="flex-1 overflow-y-auto no-scrollbar" ref={scrollContainerRef}>
         {!appStore.isAuthentication ?
           <NoContent icon={"/assets/icon/cloud_large.svg"}
                      title="Đã có lỗi xảy ra"
@@ -33,6 +57,7 @@ const Rank: React.FC = observer(() => {
                     <div className="p-4 space-y-4">
                       {appStore.leaderBoard.slice(3).map((rank, index) => (
                         <div key={index}
+                             data-rank-id={rank.rank === userRank ? "user-rank" : undefined}
                              className="px-4 py-2 border-b bg-gray-100 rounded-md flex items-center justify-between">
                           <div className="flex items-center gap-2">
                             <p className="text-primary-600 font-rankNumber text-lg">
@@ -76,6 +101,23 @@ const Rank: React.FC = observer(() => {
           </Fragment>
         }
       </main>
+      
+      {userRank && (
+        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
+          <button
+            onClick={handleFloatingButtonClick}
+            className="flex items-center gap-2 bg-white border border-gray-200 rounded-md shadow-lg hover:shadow-xl transition-shadow duration-200 pl-2"
+          >
+            <span className="text-primary-600 font-rankNumber text-lg">
+              {userRank}
+            </span>
+            <div className="flex items-center gap-2 bg-primary-100 p-2">
+              <span className="text-body3 font-medium">Bạn • {appStore.leaderBoardMe?.score || 0}</span>
+              <ChevronsDown size={16} className={"text-gray-400"}/>
+            </div>
+          </button>
+        </div>
+      )}
       
       <BottomNavigation/>
     </div>

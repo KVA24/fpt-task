@@ -5,6 +5,7 @@ import {appStore, RankType} from "@/stores/appStore.ts";
 import RankFilter from "@/components/RankingFilter.tsx";
 import {getRandomAvatar} from "@/utils/utils.ts";
 import {Tooltip} from 'react-tooltip'
+import {Link} from "react-router-dom";
 
 const RankHeader: React.FC = observer(() => {
   const {t} = useTranslation()
@@ -14,7 +15,9 @@ const RankHeader: React.FC = observer(() => {
   }
   
   useEffect(() => {
-    appStore.getLeaderBoard().then()
+    appStore.getLeaderBoard().then(() => {
+      appStore.getLeaderBoard(true).then()
+    })
   }, [appStore.rankType])
   
   const handleBackApp = () => {
@@ -35,9 +38,9 @@ const RankHeader: React.FC = observer(() => {
       `}>
       {/* Main Header */}
       <header className="flex items-center justify-between px-4 bg-transparent h-[70px]">
-        <div className="flex items-center gap-2">
+        <Link to={"/"} className="flex items-center gap-2">
           <img src="/assets/icon/fpt_logo.svg" alt="Logo" className="w-[141px] h-[44px]"/>
-        </div>
+        </Link>
         
         <div className="flex items-center">
           <button className="pr-2 rounded-full transition-colors relative text-body2 text-white"
